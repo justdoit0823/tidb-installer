@@ -9,7 +9,7 @@ dist/*
 
 build/*
 
-pywxclient.egg-info/*
+tidb_installer.egg-info/*
 
 .cache/*
 

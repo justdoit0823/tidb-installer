@@ -1,0 +1,92 @@
+## TiDB Cluster Part
+
+[tidb_servers]
+{% for host in tidb_hosts %}
+{{host}}
+{% endfor %}
+
+[tikv_servers]
+{% for host in tikv_hosts %}
+{{host}}
+{% endfor %}
+
+
+[pd_servers]
+{% for host in pd_hosts %}
+{{host}}
+{% endfor %}
+
+## Monitoring Part
+# prometheus and pushgateway servers
+[monitoring_servers]
+{% for host in monitoring_hosts %}
+{{host}}
+{% endfor %}
+
+[grafana_servers]
+{% for host in grafana_hosts %}
+{{host}}
+{% endfor %}
+
+# node_exporter and blackbox_exporter servers
+[monitored_servers]
+{% for host in monitored_hosts %}
+{{host}}
+{% endfor %}
+
+[alertmanager_servers]
+{% for host in alert_hosts %}
+{{host}}
+{% endfor %}
+
+[kafka_exporter_servers]
+
+## Binlog Part
+[pump_servers:children]
+tidb_servers
+
+[drainer_servers]
+
+## Group variables
+[pd_servers:vars]
+# location_labels = ["zone","rack","host"]
+
+## Global variables
+[all:vars]
+deploy_dir = /home/tidb/deploy
+
+## Connection
+# ssh via normal user
+ansible_user = {{user}}
+
+cluster_name = test-cluster
+
+tidb_version = v2.0.2
+
+# process supervision, [systemd, supervise]
+process_supervision = systemd
+
+# timezone of deployment region
+timezone = Asia/Shanghai
+set_timezone = True
+
+enable_firewalld = False
+# check NTP service
+enable_ntpd = False
+set_hostname = False
+
+# store slow query log into seperate file
+enable_slow_query_log = False
+
+# enable TLS authentication in the TiDB cluster
+enable_tls = False
+
+# KV mode
+deploy_without_tidb = False
+
+# Optional: Set if you already have a alertmanager server.
+# Format: alertmanager_host:alertmanager_port
+alertmanager_target = ""
+
+grafana_admin_user = "admin"
+grafana_admin_password = "admin"
