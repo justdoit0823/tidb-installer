@@ -8,6 +8,7 @@ __all__ = ['Command']
 
 
 class Command:
+    """Command object."""
 
     __slots__ = ('_cmd',)
 

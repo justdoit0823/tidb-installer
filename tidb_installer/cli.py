@@ -30,9 +30,13 @@ def init(**kwargs):
 
 @main.command('create', help='create a Tidb cluster.')
 @click.option('--path', '-f', help='Tidb installer work directory.')
-@click.option('--host-type', type=click.Choice(['vagrant']), help='host machine type.')
-@click.option('--skip-host/--no-skip-host', default=False, help='skip creating host machine.')
-@click.option('--user', '-u', default='tidb', help='Tidb cluster system user name.')
+@click.option(
+    '--host-type', type=click.Choice(['vagrant']), help='host machine type.')
+@click.option(
+    '--skip-host/--no-skip-host', default=False,
+    help='skip creating host machine.')
+@click.option(
+    '--user', '-u', default='tidb', help='Tidb cluster system user name.')
 @click.option('--tidb', '-d', multiple=True, help='Tidb host address.')
 @click.option('--pd', '-p', multiple=True, help='Pd host address.')
 @click.option('--tikv', '-k', multiple=True, help='Tikv host address.')

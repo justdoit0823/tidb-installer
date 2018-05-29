@@ -19,11 +19,12 @@ class TidbAnsible:
         self._version = version
 
     def initialize(self):
+        """Initialize tidb ansible environment."""
         if not os.path.exists(self._work_dir):
             os.mkdir(self._work_dir)
         elif not os.path.isdir(self._work_dir):
             raise RuntimeError(
-                'Path %s already exists, while it is not a directory.' % self._work_dir)
+                'Path %s already exists, but it is not a directory.' % self._work_dir)
 
         os.chdir(self._work_dir)
 
@@ -32,7 +33,8 @@ class TidbAnsible:
         self._install()
 
     def _download(self):
-        cmd = Command('git clone -b release-{0} {1}'.format(self._version, self.git_url))
+        cmd = Command(
+            'git clone -b release-{0} {1}'.format(self._version, self.git_url))
         cmd.run()
 
     def _create_virtual_env(self):

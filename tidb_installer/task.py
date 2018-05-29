@@ -76,11 +76,13 @@ def configure_ssh(work_dir, user, hosts):
     for host in new_hosts:
         with cwd():
             os.chdir('{0}/vbox/{1}'.format(work_dir, host))
-            cmd = Command('vagrant ssh-config > /tmp/ssh-config-{0}'.format(host))
+            cmd = Command(
+                'vagrant ssh-config > /tmp/ssh-config-{0}'.format(host))
             cmd.run()
             with open('/tmp/ssh-config-{0}'.format(host)) as f:
                 content = f.read()
-                content = content.replace('Host default', 'Host {0}'.format(host))
+                content = content.replace(
+                    'Host default', 'Host {0}'.format(host))
                 new_configs.append(content)
 
     config_content = '\n'.join(new_configs)
@@ -108,14 +110,22 @@ def deploy_tidb_cluster(work_dir):
     """Deploy tidb cluster."""
     ansible_base_path = '{0}/v3/bin'.format(work_dir)
     tidb_ansible_path = '{0}/tidb-ansible'.format(work_dir)
-    prepare_cmd = Command('{0}/ansible-playbook -i {1}/iventory {2}/local_prepare.yml'.format(ansible_base_path, work_dir, tidb_ansible_path))
+    prepare_cmd = Command(
+        '{0}/ansible-playbook -i {1}/inventory {2}/local_prepare.yml'.format(
+            ansible_base_path, work_dir, tidb_ansible_path))
     prepare_cmd.run()
 
-    bootstrap_cmd = Command('{0}/ansible-playbook -i {1}/iventory {2}/bootstrap.yml'.format(ansible_base_path, work_dir, tidb_ansible_path))
+    bootstrap_cmd = Command(
+        '{0}/ansible-playbook -i {1}/inventory {2}/bootstrap.yml'.format(
+            ansible_base_path, work_dir, tidb_ansible_path))
     bootstrap_cmd.run()
 
-    deploy_cmd = Command('{0}/ansible-playbook -i {1}/iventory {2}/deploy.yml'.format(ansible_base_path, work_dir, tidb_ansible_path))
+    deploy_cmd = Command(
+        '{0}/ansible-playbook -i {1}/inventory {2}/deploy.yml'.format(
+            ansible_base_path, work_dir, tidb_ansible_path))
     deploy_cmd.run()
 
-    start_cmd = Command('{0}/ansible-playbook -i {1}/iventory {2}/start.yml'.format(ansible_base_path, work_dir, tidb_ansible_path))
+    start_cmd = Command(
+        '{0}/ansible-playbook -i {1}/inventory {2}/start.yml'.format(
+            ansible_base_path, work_dir, tidb_ansible_path))
     start_cmd.run()

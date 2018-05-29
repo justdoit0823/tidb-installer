@@ -29,7 +29,7 @@ class Vagrant:
             os.mkdir(self._vbox_dir)
         elif not os.path.isdir(self._vbox_dir):
             raise RuntimeError(
-                'Path %s already exists, while it is not a directory.' % self._vbox_dir)
+                'Path %s already exists, but it is not a directory.' % self._vbox_dir)
 
         os.chdir(self._vbox_dir)
 
