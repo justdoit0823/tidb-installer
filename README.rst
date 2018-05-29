@@ -3,12 +3,6 @@ tidb_installer
 ==============
 
 
-.. image:: https://img.shields.io/pypi/v/tidb_installer.svg
-        :target: https://pypi.python.org/pypi/tidb_installer
-
-.. image:: https://img.shields.io/travis/justdoit0823/tidb_installer.svg
-        :target: https://travis-ci.org/justdoit0823/tidb_installer
-
 .. image:: https://readthedocs.org/projects/tidb-installer/badge/?version=latest
         :target: https://tidb-installer.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
@@ -46,14 +40,14 @@ First, you should clone this repository into your machine.
 
     git clone https://github.com/justdoit0823/tidb-installer
 
-Then, install this tool with `Python3`,
+Then, install this tool with ``Python3``,
 
 .. code-block:: console
 
     cd tidb-installer
     python3 setup.py install
 
-Now, you can use command `tidb_installer` which supports `init` and `create` subcommands.
+Now, you can use command ``tidb_installer`` which supports ``init`` and ``create`` subcommands.
 
 
 Get start
