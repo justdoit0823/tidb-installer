@@ -15,5 +15,6 @@ class Command:
         self._cmd = cmd
 
     def run(self):
+        """Execute the command."""
         if os.system(self._cmd) != 0:
             raise RuntimeError

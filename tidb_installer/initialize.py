@@ -10,6 +10,7 @@ __all__ = ['TidbAnsible']
 
 
 class TidbAnsible:
+    """Tidb ansible class."""
 
     git_url = 'https://github.com/pingcap/tidb-ansible.git'
 

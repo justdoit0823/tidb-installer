@@ -20,6 +20,7 @@ class Vagrant:
         self._vbox_dir = work_dir
 
     def start(self):
+        """Start machine node."""
         self._prepare()
         self._run()
 

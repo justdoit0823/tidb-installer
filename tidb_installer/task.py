@@ -1,5 +1,5 @@
 
-"""Main module."""
+"""Task module."""
 
 import os
 

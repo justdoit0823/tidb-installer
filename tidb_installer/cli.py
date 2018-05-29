@@ -6,7 +6,7 @@ import sys
 
 import click
 
-from .tidb_installer import init_tidb_ansible, create_tidb_cluster, deploy_tidb_cluster
+from .task import init_tidb_ansible, create_tidb_cluster, deploy_tidb_cluster
 
 
 @click.group()
@@ -18,6 +18,7 @@ def main():
 @click.option('--path', '-p', type=str, help='tidb installer work directory.')
 @click.option('--version', '-v', type=str, help='tidb-ansible version.')
 def init(**kwargs):
+    """Init command."""
     path = kwargs['path']
     version = kwargs['version']
     if not all((path, version)):
@@ -37,6 +38,7 @@ def init(**kwargs):
 @click.option('--tikv', '-k', multiple=True, help='Tikv host address.')
 @click.option('-n', default=1, help='numbers of the Tikv instances.')
 def create(**kwargs):
+    """Create command."""
     path = kwargs['path']
     host_type = kwargs['host_type']
     skip_host = kwargs['skip_host']
@@ -60,7 +62,6 @@ def create(**kwargs):
 
     os.chdir(path)
     path = os.getcwd()
-    print(path)
 
     create_tidb_cluster(path, host_type, skip_host, tidb, pd, tikv)
 
