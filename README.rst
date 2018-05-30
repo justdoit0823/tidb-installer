@@ -10,7 +10,7 @@ tidb_installer
 
 Tidb-installer is a simple tool for building a tidb cluster based on Vagrant_.
 It wraps the official Tidb-ansible_ repository and supports the command line interface.
-With this, it's easy to start your own tidb cluster automatically.
+And it's easy to start your own tidb cluster automatically.
 
 
 .. _Vagrant: https://www.vagrantup.com/docs/
@@ -50,8 +50,8 @@ Then, install this tool with ``Python3``,
 Now, you can use command ``tidb_installer`` which supports ``init`` and ``create`` subcommands.
 
 
-Get start
-----------
+Get started
+------------
 
 * create tidb ansible environment
 
